@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>คำร้องขอย้ายสาขาวิชาภายในคณะ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">คำร้องขอย้ายสาขาวิชาภายในคณะ</h1>
+    
+    <form id="transferForm" class="space-y-4">
+        <p class="text-gray-600 mb-4">กรุณากรอกข้อมูลด้านล่างเพื่อทำการย้ายสาขาวิชา</p>
+      <div>
+        <label class="block font-medium mb-1">ชื่อ-นามสกุล</label>
+        <input type="text" id="fullname" class="w-full border rounded p-2" placeholder="กรอกชื่อ-นามสกุล">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">รหัสนักศึกษา</label>
+        <input type="text" id="studentId" class="w-full border rounded p-2" placeholder="เช่น 6501234567">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">สาขาเดิม</label>
+        <input type="text" id="oldMajor" class="w-full border rounded p-2" placeholder="กรอกสาขาเดิม">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">สาขาที่ต้องการย้าย</label>
+        <input type="text" id="newMajor" class="w-full border rounded p-2" placeholder="กรอกสาขาใหม่">
+      </div>
+
+
+      <div>
+        <label class="block font-medium mb-1">เหตุผลการย้าย</label>
+        <textarea id="reason" class="w-full border rounded p-2" rows="3" placeholder="กรอกเหตุผล"></textarea>
+      </div>
+  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">
+        ส่งคำร้อง
+      </button>
+
+      <p id="errorMsg" class="text-red-500 font-medium text-center mt-2 hidden"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('transferForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let fullname = document.getElementById('fullname').value.trim();
+      let studentId = document.getElementById('studentId').value.trim();
+      let oldMajor = document.getElementById('oldMajor').value.trim();
+      let newMajor = document.getElementById('newMajor').value.trim();
+      let reason = document.getElementById('reason').value.trim();
+      let errorMsg = document.getElementById('errorMsg');
+
+      if (!fullname || !studentId || !oldMajor || !newMajor || !reason) {
+        errorMsg.textContent = "กรุณากรอกข้อมูลให้ครบทุกช่อง";
+        errorMsg.classList.remove("hidden");
+      } else {
+        errorMsg.classList.add("hidden");
+        alert("ส่งคำร้องสำเร็จ");
+      }
+    });
+  </script>
+</body>
+</html>
